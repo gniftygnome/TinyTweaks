@@ -18,6 +18,7 @@ public class TallGrassSpread {
     public void growGrass(BlockState state, ServerWorld world, BlockPos pos, Random random, CallbackInfo ci) {
         if (Tweaks.CONFIG.rejuvenation.enabled && state.getBlock() == Blocks.GRASS_BLOCK) {
             Block above = world.getBlockState(pos.up()).getBlock();
+            Block above2 = world.getBlockState(pos.up(2)).getBlock();
             int friends = 1;
 
 
@@ -36,7 +37,7 @@ public class TallGrassSpread {
             if (above == Blocks.AIR && random.nextFloat() < Tweaks.CONFIG.rejuvenation.grassGrowthRate * (friends)) {
                 world.setBlockState(pos.up(), Blocks.GRASS.getDefaultState());
                 ci.cancel();
-            } else if (Tweaks.CONFIG.rejuvenation.longGrass > 0.000001 && above == Blocks.GRASS) {
+            } else if (Tweaks.CONFIG.rejuvenation.longGrass > 0.000001 && above == Blocks.GRASS && above2 == Blocks.AIR) {
                 Random tallGrassRandom = new Random();
                 tallGrassRandom.setSeed(pos.asLong());
                 if (tallGrassRandom.nextFloat() < Tweaks.CONFIG.rejuvenation.longGrass && random.nextFloat() < Tweaks.CONFIG.rejuvenation.grassGrowthRate) {
