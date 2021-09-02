@@ -4,6 +4,7 @@ import dev.hephaestus.tweaks.Tweaks;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.passive.AnimalEntity;
+import net.minecraft.entity.passive.BeeEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.loot.context.LootContext;
 import net.minecraft.loot.context.LootContextParameters;
@@ -47,6 +48,10 @@ public class EatCropsGoal extends Goal {
             BlockPos blockPos = this.canEat();
 
             if (blockPos != null) {
+                if (this.animal instanceof BeeEntity) {
+                    ((BeeEntity) (this.animal)).setHasNectar(true);
+                }
+
                 if (this.world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING)) {
                     this.world.breakBlock(blockPos, true);
                 }
