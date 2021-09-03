@@ -118,6 +118,10 @@ public class TweaksConfig implements ConfigData {
     @ConfigEntry.Gui.Tooltip
     public boolean automaticDoors = true;
 
+    @ConfigEntry.Category("misc")
+    @ConfigEntry.Gui.Tooltip
+    public boolean editableSigns = true;
+
     public static class AutoPlanting {
         @ConfigEntry.Gui.Tooltip(count = 4)
         public boolean enabled = true;

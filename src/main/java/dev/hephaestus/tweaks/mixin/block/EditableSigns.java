@@ -1,5 +1,6 @@
 package dev.hephaestus.tweaks.mixin.block;
 
+import dev.hephaestus.tweaks.Tweaks;
 import net.minecraft.block.AbstractSignBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SignBlock;
@@ -21,7 +22,7 @@ public class EditableSigns extends AbstractSignBlock {
 
 	@Override
 	public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-		if (!world.isClient && player != null) {
+		if (Tweaks.CONFIG.editableSigns && !world.isClient && player != null) {
 			player.openEditSignScreen((SignBlockEntity)world.getBlockEntity(pos));
 			return ActionResult.SUCCESS;
 		}
