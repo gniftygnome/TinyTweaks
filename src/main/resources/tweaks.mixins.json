@@ -46,6 +46,7 @@
     "entity.easyxp.LivingEntityGiveXp",
     "entity.easyxp.MateGoalXp",
     "entity.easyxp.VillagerTradeXp",
+    "entity.passive.BeeEntityInterface",
     "entity.passive.GoalSelectorAccessor",
     "entity.passive.MobEntityMixin",
     "fluid.WaterFluidMixin",

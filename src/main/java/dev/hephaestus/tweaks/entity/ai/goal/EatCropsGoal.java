@@ -1,6 +1,7 @@
 package dev.hephaestus.tweaks.entity.ai.goal;
 
 import dev.hephaestus.tweaks.Tweaks;
+import dev.hephaestus.tweaks.mixin.entity.passive.BeeEntityInterface;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.passive.AnimalEntity;
@@ -49,7 +50,7 @@ public class EatCropsGoal extends Goal {
 
             if (blockPos != null) {
                 if (this.animal instanceof BeeEntity) {
-                    ((BeeEntity) (this.animal)).setHasNectar(true);
+                    ((BeeEntityInterface) (this.animal)).callSetHasNectar(true);
                 }
 
                 if (this.world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING)) {
